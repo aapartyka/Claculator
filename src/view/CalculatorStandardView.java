@@ -25,28 +25,28 @@ public class CalculatorStandardView extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	//View knows the differnt controllers
+	// View knows the different controllers.
 	private MenuController menuController;
 	private NumericButtonController numericBtnController;
 	private OperationController operationController;
 	private MemoryController memoryController;
-	
-	//Declaration of the Menubar, Menu and Menuitems.
+
+	// Declaration of the Menu bar, Menu and Menu items.
 	private JMenuBar menuBar;
 	private JMenu mnNewMenu;
 	private JMenuItem mniProgrammer;
 	private JMenuItem mniAcademic;
 	private JMenuItem mniExit;
-	
-	//Declaration of the font
+
+	// Declaration of the font.
 	Font fontBtnNumber = new Font("Cambria Math", Font.BOLD, 19);
-	Font fontBtnOperator = new Font("Monospaced",Font.BOLD, 18);
-	Font fontMemory = new Font ("Cambria Math", Font.BOLD, 12);
-	Font fontMenubar = new Font("Monospaced",Font.PLAIN, 12);
-	
-	/*Declaration of the Components
-	* Declaration of the Buttons
-	*/
+	Font fontBtnOperator = new Font("Monospaced", Font.BOLD, 18);
+	Font fontMemory = new Font("Cambria Math", Font.BOLD, 12);
+	Font fontMenubar = new Font("Monospaced", Font.PLAIN, 12);
+
+	// Declaration of the Components.
+
+	// Declaration of the Buttons.
 	private JButton btn0;
 	private JButton btn1;
 	private JButton btn2;
@@ -77,11 +77,12 @@ public class CalculatorStandardView extends JFrame {
 	private JButton btnMemoryC;
 	private JButton btnMemory;
 	private JButton btnResult;
-	//Declaration of the JTextField
+	// Declaration of the JTextField.
 	private JTextField txfAdditionalDisplay;
 	private JTextField txfResult;
-	
+
 	private JFrame frame;
+
 	/**
 	 * Launch the application.
 	 */
@@ -110,6 +111,7 @@ public class CalculatorStandardView extends JFrame {
 		this.operationController = new OperationController(this);
 		addActionListeners();
 	}
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -376,23 +378,21 @@ public class CalculatorStandardView extends JFrame {
 		this.mniAcademic = new JMenuItem("Wissenschaftlich");
 		mnNewMenu.add(mniAcademic);
 		this.mniAcademic.setFont(fontMenubar);
-		
-		this.mniExit = new JMenuItem ("Beenden");
-		mnNewMenu.add(mniExit);	
+
+		this.mniExit = new JMenuItem("Beenden");
+		mnNewMenu.add(mniExit);
 		this.mniExit.setFont(fontMenubar);
 	}
-	
-
 
 	/**
 	 * Add the ActionListener for all components of the frame.
 	 */
-	private void addActionListeners(){
-		//Add the ActionListener for the MenuItems
+	private void addActionListeners() {
+		// Add the ActionListener for the MenuItems
 		mniProgrammer.addActionListener(menuController);
 		mniAcademic.addActionListener(menuController);
 		mniExit.addActionListener(menuController);
-		//Add the ActionListener for the numeric Buttons
+		// Add the ActionListener for the numeric Buttons.
 		btn0.addActionListener(numericBtnController);
 		btn1.addActionListener(numericBtnController);
 		btn2.addActionListener(numericBtnController);
@@ -403,7 +403,7 @@ public class CalculatorStandardView extends JFrame {
 		btn7.addActionListener(numericBtnController);
 		btn8.addActionListener(numericBtnController);
 		btn9.addActionListener(numericBtnController);
-		//add the ActionListener for all operators
+		// Add the ActionListener for all operators.
 		btnPlus.addActionListener(operationController);
 		btnMinus.addActionListener(operationController);
 		btnDivide.addActionListener(operationController);
@@ -417,7 +417,7 @@ public class CalculatorStandardView extends JFrame {
 		btnCE.addActionListener(operationController);
 		btnDot.addActionListener(operationController);
 		btnResult.addActionListener(operationController);
-		//add the Action Listener for the memory Buttons
+		// Add the Action Listener for the memory Buttons.
 		btnMemory.addActionListener(memoryController);
 		btnMemoryC.addActionListener(memoryController);
 		btnMemoryS.addActionListener(memoryController);
@@ -425,7 +425,8 @@ public class CalculatorStandardView extends JFrame {
 		btnMemoryMinus.addActionListener(memoryController);
 		btnMemoryPlus.addActionListener(memoryController);
 	}
-	//Getter & Setter
+
+	// Getter and setter.
 	public JTextField getTxfAdditionalCalculation() {
 		return txfAdditionalDisplay;
 	}
@@ -434,23 +435,23 @@ public class CalculatorStandardView extends JFrame {
 		this.txfAdditionalDisplay = txfAdditionalCalculation;
 	}
 
-	public JTextField getTxfSolution() {
+	public JTextField getTxfResult() {
 		return txfResult;
 	}
 
-	public void setTxfSolution(JTextField txfSolution) {
+	public void setTxfResult(JTextField txfSolution) {
 		this.txfResult = txfSolution;
 	}
-	
-	public JMenuItem getmniProgrammer() {
+
+	public JMenuItem getMniProgrammer() {
 		return mniProgrammer;
 	}
-	
-	public JMenuItem getmniAcademic() {		
+
+	public JMenuItem getMniAcademic() {
 		return mniAcademic;
 	}
-	
-	public JMenuItem getmniBeenden() {
+
+	public JMenuItem getMniClose() {
 		return mniExit;
 	}
 
@@ -514,7 +515,7 @@ public class CalculatorStandardView extends JFrame {
 		return btnCE;
 	}
 
-	public JButton getBtnDelete() {
+	public JButton getBtnBackspace() {
 		return btnBackspace;
 	}
 
