@@ -10,8 +10,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 import controller.MenuController;
 import controller.MemoryController;
@@ -103,7 +101,6 @@ public class CalculatorStandardView extends JFrame {
 	 * Create the application.
 	 */
 	public CalculatorStandardView() {
-		super("Rechner");
 		initializeComponents();
 		this.menuController = new MenuController(this);
 		this.numericBtnController = new NumericButtonController(this);
@@ -242,7 +239,7 @@ public class CalculatorStandardView extends JFrame {
 		btn3.setBounds(164, 347, 78, 48);
 		frame.getContentPane().add(btn3);
 
-		this.btnDot = new JButton(",");
+		this.btnDot = new JButton(".");
 		btnDot.setForeground(UIManager.getColor("Button.highlight"));
 		btnDot.setBackground(Color.DARK_GRAY);
 		btnDot.setFont(new Font("Monospaced", Font.BOLD, 19));
@@ -417,13 +414,15 @@ public class CalculatorStandardView extends JFrame {
 		btnCE.addActionListener(operationController);
 		btnDot.addActionListener(operationController);
 		btnResult.addActionListener(operationController);
-		// Add the Action Listener for the memory Buttons.
+		// Add the ActionListener for the memory Buttons.
 		btnMemory.addActionListener(memoryController);
 		btnMemoryC.addActionListener(memoryController);
 		btnMemoryS.addActionListener(memoryController);
 		btnMemoryR.addActionListener(memoryController);
 		btnMemoryMinus.addActionListener(memoryController);
 		btnMemoryPlus.addActionListener(memoryController);
+		//Add the KeyListener for the Textfield
+		txfResult.addKeyListener(numericBtnController);
 	}
 
 	// Getter and setter.

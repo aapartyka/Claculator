@@ -50,7 +50,9 @@ public class NumericButtonController implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
+		if (true) {
+			// TODO ignore wrong userinput (like letters)
+		}
 	}
 
 	@Override

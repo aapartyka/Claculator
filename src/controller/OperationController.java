@@ -14,6 +14,7 @@ public class OperationController implements ActionListener {
 	private double number1;
 	private double number2;
 	private double result;
+	private boolean noSecondNumber2;
 
 	private String displayValue;
 	private char operator;
@@ -30,47 +31,56 @@ public class OperationController implements ActionListener {
 		if (e.getSource() == view.getBtnPlus()) {
 			if (view.getTxfResult().getText().length() > 0) {
 				this.operator = '+';
-				setDisplayValue();
+				this.noSecondNumber2 = false;
 			}
 		} else if (e.getSource() == view.getBtnMinus()) {
 			if (view.getTxfResult().getText().length() > 0) {
 				this.operator = '-';
-				setDisplayValue();
+				this.noSecondNumber2 = false;
 			}
 		} else if (e.getSource() == view.getBtnDivide()) {
 			if (view.getTxfResult().getText().length() > 0) {
 				this.operator = '/';
-				setDisplayValue();
+				this.noSecondNumber2 = false;
 			}
 		} else if (e.getSource() == view.getBtnMultiply()) {
 			if (view.getTxfResult().getText().length() > 0) {
 				this.operator = '*';
-				setDisplayValue();
 			}
 		} else if (e.getSource() == view.getBtnPotencySqare()) {
 			if (view.getTxfResult().getText().length() > 0) {
-
+				this.operator = '²';
+				this.noSecondNumber2 = true;
 			}
 		} else if (e.getSource() == view.getBtnSquareRoot()) {
 			if (view.getTxfResult().getText().length() > 0) {
-
+				this.operator = '√';
+				this.noSecondNumber2 = true;
 			}
 		} else if (e.getSource() == view.getBtnPercent()) {
 			if (view.getTxfResult().getText().length() > 0) {
-
+				this.operator = '%';
+				this.noSecondNumber2 = true;
 			}
 		} else if (e.getSource() == view.getBtnOneDivideBy()) {
-
+			if (view.getTxfResult().getText().length() > 0) {
+				this.operator = 'd';
+				this.noSecondNumber2 = true;
+			}
 		} else if (e.getSource() == view.getBtnBackspace()) {
+			//Delete the latest number which is displayed.
 			if (view.getTxfResult().getText().length() > 0) {
 				view.getTxfResult().setText(""
 						+ view.getTxfResult().getText().substring(0, view.getTxfResult().getText().length() - 1));
 			}
+		} else if (e.getSource() == view.getBtnChangeSign()) {
+			if (view.getTxfResult().getText().length() > 0) {
+				this.operator = 'c';
+				this.noSecondNumber2 = true;
+			}
 		} else if (e.getSource() == view.getBtnC()) {
-
 			view.getTxfAdditionalCalculation().setText("");
 			view.getTxfResult().setText("");
-
 		} else if (e.getSource() == view.getBtnCE()) {
 			if (view.getTxfResult().getText().length() > 0) {
 
@@ -81,7 +91,11 @@ public class OperationController implements ActionListener {
 				arithmeticOperation();
 			}
 		}
-
+			
+		if (e.getSource() != view.getBtnResult() & e.getSource() != view.getBtnBackspace() & e.getSource() != view.getBtnC()) {
+			setDisplayValue();
+		}
+		
 	}
 
 	public void arithmeticOperation() {
@@ -114,27 +128,48 @@ public class OperationController implements ActionListener {
 		number1 = Double.parseDouble(displayValue);
 
 		switch (operator) {
+		case 'c':
+			changesign();
+			break;
 		case '+':
-			// addition
+		// addition
 			displayValue = displayValue + "+";
 			break;
 		case '-':
-			// Subtrahieren
+		// subtract
 			displayValue = displayValue + "-";
 			break;
 		case '*':
-			// Multipliezieren
+		// multiply
 			displayValue = displayValue + "*";
 			break;
-		// Teilen
 		case '/':
+		// divide
 			displayValue = displayValue + "/";
-
+			break;
+		case '²':
+		// potency square
+			potencySqare();
+			break;
+		case '√':
+		// squareRoot
+			squareRoot();
+			break;
+		case '%':
+		// percent
+			displayValue = displayValue + "/";
+			break;
+		case 'd':
+		// 1 divide by userinput
+			displayValue = displayValue + "/";
+			break;
 		default:
 			break;
 		}
-		view.getTxfResult().setText("");
-		view.getTxfAdditionalCalculation().setText(displayValue);
+		if (noSecondNumber2 == false) {
+			view.getTxfResult().setText("");
+			view.getTxfAdditionalCalculation().setText(displayValue);
+		}
 	}
 
 	public void add() {
@@ -162,6 +197,27 @@ public class OperationController implements ActionListener {
 
 		number2 = Double.parseDouble(view.getTxfResult().getText());
 		result = model.multiply(number1, number2);
+		view.getTxfResult().setText(Double.toString(result));
+	}
+	
+	public void changesign() {
+		result = number1 *(-1.0);
+		view.getTxfResult().setText(Double.toString(result));
+	}
+	
+	public void potencySqare(){
+		displayValue = displayValue + "²";
+		number1 = Double.parseDouble(view.getTxfResult().getText());
+		result = model.potencySquare(number1);
+		view.getTxfAdditionalCalculation().setText(displayValue);
+		view.getTxfResult().setText(Double.toString(result));
+	}	
+	
+	public void squareRoot() {
+		displayValue = displayValue + "√";
+		number1 = Double.parseDouble(view.getTxfResult().getText());
+		result = model.squareRoot(number1);
+		view.getTxfAdditionalCalculation().setText(displayValue);
 		view.getTxfResult().setText(Double.toString(result));
 	}
 }
