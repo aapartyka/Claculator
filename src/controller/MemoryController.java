@@ -18,17 +18,17 @@ public class MemoryController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getSource() == view.getBtnMemoryc()) {
-
+			// TODO set Display 0.0
 		} else if (e.getSource() == view.getMemoryMinus()) {
-
+			// TODO 
 		} else if (e.getSource() == view.getBtnMemoryPlus()) {
-
+			// TODO
 		} else if (e.getSource() == view.getBtnMemoryR()) {
-
+			// TODO
 		} else if (e.getSource() == view.getBtnMemoryS()) {
-
+			// TODO
 		} else if (e.getSource() == view.getBtnMemory()) {
-
+			// TODO
 		}
 
 	}

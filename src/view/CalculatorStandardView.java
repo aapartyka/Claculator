@@ -407,6 +407,7 @@ public class CalculatorStandardView extends JFrame {
 		btnMultiply.addActionListener(operationController);
 		btnOneDivideBy.addActionListener(operationController);
 		btnPotencyQuadrat.addActionListener(operationController);
+		btnSquareRoot.addActionListener(operationController);
 		btnPercent.addActionListener(operationController);
 		btnChangeSign.addActionListener(operationController);
 		btnBackspace.addActionListener(operationController);

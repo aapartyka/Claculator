@@ -157,7 +157,7 @@ public class OperationController implements ActionListener {
 			break;
 		case '%':
 		// percent
-			displayValue = displayValue + "/";
+			displayValue = displayValue + "%";
 			break;
 		case 'd':
 		// 1 divide by userinput
@@ -189,7 +189,12 @@ public class OperationController implements ActionListener {
 	public void divide() {
 
 		number2 = Double.parseDouble(view.getTxfResult().getText());
-		result = model.divide(number1, number2);
+		try {
+			result = model.divide(number1, number2);
+		} catch (ArithmeticException excp) {
+			// TODO: Add tooltipp which Displays the exception.
+		}
+
 		view.getTxfResult().setText(Double.toString(result));
 	}
 
@@ -207,7 +212,6 @@ public class OperationController implements ActionListener {
 	
 	public void potencySqare(){
 		displayValue = displayValue + "²";
-		number1 = Double.parseDouble(view.getTxfResult().getText());
 		result = model.potencySquare(number1);
 		view.getTxfAdditionalCalculation().setText(displayValue);
 		view.getTxfResult().setText(Double.toString(result));
@@ -215,7 +219,6 @@ public class OperationController implements ActionListener {
 	
 	public void squareRoot() {
 		displayValue = displayValue + "√";
-		number1 = Double.parseDouble(view.getTxfResult().getText());
 		result = model.squareRoot(number1);
 		view.getTxfAdditionalCalculation().setText(displayValue);
 		view.getTxfResult().setText(Double.toString(result));

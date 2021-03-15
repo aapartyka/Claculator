@@ -21,7 +21,7 @@ public class CalculatorStandardModel implements CalculatorStandardModelInterface
 	}
 
 	@Override
-	public double divide(double disor, double dividend) {
+	public double divide(double dividend, double disor) throws ArithmeticException {
 
 		double result;
 		result = dividend / disor; 
