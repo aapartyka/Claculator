@@ -3,7 +3,7 @@ package model;
 public class CalculatorStandardModel implements CalculatorStandardModelInterface {
 
 	@Override
-	public double addition(double summand1, double summand2) {
+	public double add(double summand1, double summand2) {
 
 		double result;	
 		result = summand1 + summand2;
@@ -12,7 +12,7 @@ public class CalculatorStandardModel implements CalculatorStandardModelInterface
 	}
 
 	@Override
-	public double subtration(double minus1, double minus2) {
+	public double subtract(double minus1, double minus2) {
 		
 		double result;
 		result = minus1 - minus2;
@@ -21,7 +21,7 @@ public class CalculatorStandardModel implements CalculatorStandardModelInterface
 	}
 
 	@Override
-	public double division(double disor, double dividend) {
+	public double divide(double disor, double dividend) {
 
 		double result;
 		result = dividend / disor; 
@@ -30,7 +30,7 @@ public class CalculatorStandardModel implements CalculatorStandardModelInterface
 	}
 
 	@Override
-	public double multiplikatio(double multi1, double multi2) {
+	public double multiply(double multi1, double multi2) {
 
 		double result = multi1 * multi2;
 		
@@ -38,7 +38,7 @@ public class CalculatorStandardModel implements CalculatorStandardModelInterface
 	}
 
 	@Override
-	public double OneByX(double x) {
+	public double oneDivideBy(double x) {
 
 		double result;
 		result = 1 / x;
@@ -47,7 +47,7 @@ public class CalculatorStandardModel implements CalculatorStandardModelInterface
 	}
 
 	@Override
-	public double quadratwurzel(double x) {
+	public double squareRoot(double x) {
 
 		double result;	
 		result = Math.sqrt(x);
@@ -56,7 +56,7 @@ public class CalculatorStandardModel implements CalculatorStandardModelInterface
 	}
 
 	@Override
-	public double quadrat(double x) {
+	public double potencySquare(double x) {
 
 		double result = Math.pow(x, 2);	
 		
